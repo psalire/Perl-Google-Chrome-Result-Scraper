@@ -9,7 +9,7 @@ use HTML::TreeBuilder;
 
 # Get search term from cmd line
 if (!@ARGV) {
-    print("Usage: test.pl [SEARCH_TERM]");
+    die("Usage: test.pl [SEARCH_TERM]");
 }
 my $search_term = $ARGV[0];
 
