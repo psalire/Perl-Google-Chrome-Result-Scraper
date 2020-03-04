@@ -6,7 +6,6 @@ use warnings;
 use HTTP::Request;
 use LWP::UserAgent;
 use HTML::TreeBuilder;
-use Data::Dumper;
 
 # Get search term from cmd line
 if (!@ARGV) {
