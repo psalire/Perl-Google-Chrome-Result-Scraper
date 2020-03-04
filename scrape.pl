@@ -14,13 +14,16 @@ if (!@ARGV) {
 }
 my $search_term = $ARGV[0];
 
+# Recursive function to find text to print from HTML
 sub print_recursively {
 	my $elem = $_[0];
 	my @children = $elem->content_list;
 	if (@children) {
 		foreach my $e (@children) {
+			# If is an HTML element
 			if (ref($e) eq "HTML::Element") {
-				# print($_[1].$e->tag."\n");
+			
+				# Only process DIV, SPAN, or A
 				my $tag = $e->tag;
 				if ($tag eq 'div' || $tag eq 'span') {
 					print_recursively($e, $_[1]."-");
@@ -34,13 +37,13 @@ sub print_recursively {
 					}
 				}
 			}
+			# Else assume is a text node and print
 			else {
 				print($e . "\n");
 			}
 		}
 	}
 	else {
-		# print('END');
 		print($elem->as_text);
 	}
 	return;
